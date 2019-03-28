@@ -13,7 +13,8 @@ I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
 ## Installation
 
-### Manual (Linux tested)
+### Manual
+0. install Linux if you are on Windows ;)
 1. [install Go](https://golang.org/doc/install)
 2. clone the repo
 3. move to the repo
@@ -23,7 +24,7 @@ I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
 Or
 
-### Binaries (Linux users)
+### Binaries
 1. [Download binaries](https://github.com/AnarionBe/MinesDodger/releases)
 2. go to your downloads folder
 3. run `./goMine` and enjoy :)
