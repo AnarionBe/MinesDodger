@@ -13,11 +13,11 @@ I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
 ## Installation
 
-TODO
-
-## Usage
-
-TODO
+1. [install Go](https://golang.org/doc/install)
+2. clone the repo
+3. move to the repo
+4. run `go build`
+5. run `./goMine` and enjoy :)
 
 * * *
 
