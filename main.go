@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"os"
 	"os/exec"
+	"runtime"
 	"strconv"
 	"time"
 
@@ -30,6 +31,7 @@ type mode struct {
 
 var board []tile
 var gameMode mode
+var clear string
 
 func getIndex(coord coordinates) int {
 	return coord.y*gameMode.width + coord.x
@@ -167,7 +169,7 @@ func generateBoard() {
 }
 
 func drawBoard(coord coordinates) {
-	cmd := exec.Command("clear")
+	cmd := exec.Command(clear)
 	cmd.Stdout = os.Stdout
 	cmd.Run()
 
@@ -320,6 +322,13 @@ func checkWin() {
 }
 
 func main() {
+
+	if runtime.GOOS == "windows" {
+		clear = "cls"
+	} else {
+		clear = "clear"
+	}
+
 	selectMode()
 	generateBoard()
 	for true {
