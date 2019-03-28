@@ -4,7 +4,7 @@
 
 ---
 
-Play to minesweeper inside your Linux terminal
+Play minesweeper inside your Linux terminal
 
 ## About
 
