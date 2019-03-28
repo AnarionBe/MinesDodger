@@ -2,7 +2,7 @@
 
 > 🛰️ A terminal minesweeper game
 
-* * *
+---
 
 Play to minesweeper inside your Linux terminal
 
@@ -19,6 +19,10 @@ I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 4. run `go build`
 5. run `./goMine` and enjoy :)
 
-* * *
+Or
+
+[Download binaries](https://github.com/AnarionBe/MinesDodger/releases)
+
+---
 
 March 2019, Marco De Bona.
