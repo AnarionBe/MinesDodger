@@ -12,6 +12,7 @@ I made this game to learn Go. This is a very basic application and not optimized
 I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
 ## Installation
+
 ### Manual
 1. [install Go](https://golang.org/doc/install)
 2. clone the repo
@@ -21,7 +22,10 @@ I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
 Or
 
-[Download binaries](https://github.com/AnarionBe/MinesDodger/releases)(Linux users)
+### Binaries (Linux users)
+1. [Download binaries](https://github.com/AnarionBe/MinesDodger/releases)
+2. go to your downloads folder
+3. run `./goMine` and enjoy :)
 
 ---
 
