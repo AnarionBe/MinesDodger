@@ -1,22 +1,23 @@
 # BeCode: MinesDodger
 
-> 🛰️ Short project's description
+> 🛰️ A terminal minesweeper game
 
 * * *
 
-A short abstract of the project, goals, context… Anything that should be useful for a future reader.
+Play to minesweeper inside your Linux terminal
 
 ## About
 
-A more detailed description of the project, with technical details: used langages and techs, context, etc.
+I made this game to learn Go. This is a very basic application and not optimized (already).
+I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
-## Installation (if applicable)
+## Installation
 
-Details of process to install / setup dev environment for the project, if applicable.
+TODO
 
-## Usage (if applicable)
+## Usage
 
-How to use the project, if applicable
+TODO
 
 * * *
 
