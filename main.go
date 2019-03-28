@@ -278,6 +278,57 @@ func selectAction(coord coordinates) string {
 	return action
 }
 
+func revealMore(coord coordinates) {
+	if coord.y-1 >= 0 && board[getIndex(coordinates{coord.x, coord.y - 1})].state == 0 {
+		board[getIndex(coordinates{coord.x, coord.y - 1})].state = 1
+		if board[getIndex(coordinates{coord.x, coord.y - 1})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x, coord.y - 1})
+		}
+	}
+	if coord.y-1 >= 0 && coord.x+1 < gameMode.width && board[getIndex(coordinates{coord.x + 1, coord.y - 1})].state == 0 {
+		board[getIndex(coordinates{coord.x + 1, coord.y - 1})].state = 1
+		if board[getIndex(coordinates{coord.x + 1, coord.y - 1})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x + 1, coord.y - 1})
+		}
+	}
+	if coord.x+1 < gameMode.width && board[getIndex(coordinates{coord.x + 1, coord.y})].state == 0 {
+		board[getIndex(coordinates{coord.x + 1, coord.y})].state = 1
+		if board[getIndex(coordinates{coord.x + 1, coord.y})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x + 1, coord.y})
+		}
+	}
+	if coord.y+1 < gameMode.height && coord.x+1 < gameMode.width && board[getIndex(coordinates{coord.x + 1, coord.y + 1})].state == 0 {
+		board[getIndex(coordinates{coord.x + 1, coord.y + 1})].state = 1
+		if board[getIndex(coordinates{coord.x + 1, coord.y + 1})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x + 1, coord.y + 1})
+		}
+	}
+	if coord.y+1 < gameMode.height && board[getIndex(coordinates{coord.x, coord.y + 1})].state == 0 {
+		board[getIndex(coordinates{coord.x, coord.y + 1})].state = 1
+		if board[getIndex(coordinates{coord.x, coord.y + 1})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x, coord.y + 1})
+		}
+	}
+	if coord.y+1 < gameMode.height && coord.x-1 >= 0 && board[getIndex(coordinates{coord.x - 1, coord.y + 1})].state == 0 {
+		board[getIndex(coordinates{coord.x - 1, coord.y + 1})].state = 1
+		if board[getIndex(coordinates{coord.x - 1, coord.y + 1})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x - 1, coord.y + 1})
+		}
+	}
+	if coord.x-1 >= 0 && board[getIndex(coordinates{coord.x - 1, coord.y})].state == 0 {
+		board[getIndex(coordinates{coord.x - 1, coord.y})].state = 1
+		if board[getIndex(coordinates{coord.x - 1, coord.y})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x - 1, coord.y})
+		}
+	}
+	if coord.y-1 >= 0 && coord.x-1 >= 0 && board[getIndex(coordinates{coord.x - 1, coord.y - 1})].state == 0 {
+		board[getIndex(coordinates{coord.x - 1, coord.y - 1})].state = 1
+		if board[getIndex(coordinates{coord.x - 1, coord.y - 1})].content == "0️⃣ " {
+			revealMore(coordinates{coord.x - 1, coord.y - 1})
+		}
+	}
+}
+
 func manageTile(coord coordinates, action string) {
 	switch action {
 	case "Discover":
@@ -286,6 +337,9 @@ func manageTile(coord coordinates, action string) {
 			drawBoard(coord)
 			fmt.Println("Ho you lost 😞. Try again !")
 			os.Exit(1)
+		}
+		if board[getIndex(coord)].content == "0️⃣ " {
+			revealMore(coord)
 		}
 		break
 
