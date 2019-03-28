@@ -21,7 +21,7 @@ I use [Alec Aivazis's library](https://github.com/AlecAivazis/survey) for menus.
 
 Or
 
-[Download binaries](https://github.com/AnarionBe/MinesDodger/releases)
+[Download binaries](https://github.com/AnarionBe/MinesDodger/releases)(Linux users)
 
 ---
 
