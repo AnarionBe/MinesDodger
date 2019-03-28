@@ -5,6 +5,7 @@
 *.so
 *.dylib
 MinesDodger
+goMine
 
 # Test binary, build with `go test -c`
 *.test
