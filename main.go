@@ -55,12 +55,13 @@ func generateCoord() coordinates {
 
 	coord.x = rng.Intn(gameMode.width)
 	coord.y = rng.Intn(gameMode.height)
+	fmt.Println(coord)
 
 	return coord
 }
 
 func hasMine(coord coordinates) bool {
-	if board[coord.y*10+coord.x].content == "💥" {
+	if board[coord.y*gameMode.height+coord.x].content == "💥" {
 		return true
 	}
 	return false
@@ -124,6 +125,8 @@ func generateBoard() {
 			if err != nil {
 				os.Exit(1)
 			}
+
+			fmt.Println(gameMode.height, "-", gameMode.width, "-", gameMode.mines)
 		}
 		break
 	}
@@ -254,6 +257,7 @@ func drawBoard(coord coordinates) {
 			if coord.y == y && coord.x == x {
 				fmt.Print(blinkOff)
 			}
+			// this is to print only the content of tiles
 			// fmt.Print(board[getIndex(coordinates{x, y})].content, "\t")
 		}
 		if coord.y == y && coord.x == -1 {
@@ -416,20 +420,21 @@ func manageTile(coord coordinates, action string) {
 
 func checkWin() {
 	count := 0
-	for i := len(board); i < len(board); i++ {
-		if board[i].state == 0 {
-			return
-		} else if board[i].state == 2 {
-			count++
+	for y := 0; y < gameMode.height; y++ {
+		for x := 0; x < gameMode.width; x++ {
+			if board[getIndex(coordinates{x, y})].state == 2 && board[getIndex(coordinates{x, y})].content == "💥" {
+				count++
+			}
 		}
 	}
-	if count == gameMode.mines-1 {
+	if count == gameMode.mines {
 		fmt.Println("Congrats you win 🎉🎉🎉")
 		os.Exit(0)
 	}
 }
 
 func main() {
+	// windows case not usefull atm but I hope that it will be working on Win in the future
 	if runtime.GOOS == "windows" {
 		clear = "cls"
 	} else {
