@@ -96,22 +96,34 @@ func generateBoard() {
 			prompt := &survey.Input{
 				Message: "How many lines?",
 			}
-			survey.AskOne(prompt, &gameMode.height, nil)
+			err := survey.AskOne(prompt, &gameMode.height, nil)
+			if err != nil {
+				os.Exit(1)
+			}
 
 			prompt = &survey.Input{
 				Message: "How many columns?",
 			}
-			survey.AskOne(prompt, &gameMode.width, nil)
+			err = survey.AskOne(prompt, &gameMode.width, nil)
+			if err != nil {
+				os.Exit(1)
+			}
 
 			prompt = &survey.Input{
 				Message: "How many mines?",
 			}
-			survey.AskOne(prompt, &gameMode.mines, nil)
+			err = survey.AskOne(prompt, &gameMode.mines, nil)
+			if err != nil {
+				os.Exit(1)
+			}
 
 			promptConf := &survey.Confirm{
 				Message: "Confirm game configuration?",
 			}
-			survey.AskOne(promptConf, &confirmed, nil)
+			err = survey.AskOne(promptConf, &confirmed, nil)
+			if err != nil {
+				os.Exit(1)
+			}
 		}
 		break
 	}
