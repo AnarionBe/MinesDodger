@@ -40,7 +40,7 @@ func getIndex(coord coordinates) int {
 func selectMode() {
 	prompt := &survey.Select{
 		Message: "Chose a difficulty:",
-		Options: []string{"Easy", "Medium", "Hard"},
+		Options: []string{"Easy", "Medium", "Hard", "Custom"},
 	}
 	err := survey.AskOne(prompt, &gameMode.name, nil)
 	if err != nil {
@@ -84,6 +84,35 @@ func generateBoard() {
 		gameMode.width = 30
 		gameMode.height = 16
 		gameMode.mines = 99
+		break
+
+	case "Custom":
+		confirmed := false
+		for !confirmed {
+			cmd := exec.Command(clear)
+			cmd.Stdout = os.Stdout
+			cmd.Run()
+
+			prompt := &survey.Input{
+				Message: "How many lines?",
+			}
+			survey.AskOne(prompt, &gameMode.height, nil)
+
+			prompt = &survey.Input{
+				Message: "How many columns?",
+			}
+			survey.AskOne(prompt, &gameMode.width, nil)
+
+			prompt = &survey.Input{
+				Message: "How many mines?",
+			}
+			survey.AskOne(prompt, &gameMode.mines, nil)
+
+			promptConf := &survey.Confirm{
+				Message: "Confirm game configuration?",
+			}
+			survey.AskOne(promptConf, &confirmed, nil)
+		}
 		break
 	}
 
