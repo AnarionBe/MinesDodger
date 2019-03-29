@@ -42,7 +42,10 @@ func selectMode() {
 		Message: "Chose a difficulty:",
 		Options: []string{"Easy", "Medium", "Hard"},
 	}
-	survey.AskOne(prompt, &gameMode.name, nil)
+	err := survey.AskOne(prompt, &gameMode.name, nil)
+	if err != nil {
+		os.Exit(1)
+	}
 }
 
 func generateCoord() coordinates {
@@ -232,7 +235,11 @@ func selectCoord() coordinates {
 		Options:  array,
 		PageSize: 20,
 	}
-	survey.AskOne(prompt, &coord.y, nil)
+
+	err := survey.AskOne(prompt, &coord.y, nil)
+	if err != nil {
+		os.Exit(1)
+	}
 
 	drawBoard(coord)
 
@@ -247,7 +254,10 @@ func selectCoord() coordinates {
 		Options:  array,
 		PageSize: 20,
 	}
-	survey.AskOne(prompt, &coord.x, nil)
+	err = survey.AskOne(prompt, &coord.x, nil)
+	if err != nil {
+		os.Exit(1)
+	}
 
 	drawBoard(coord)
 
@@ -273,7 +283,10 @@ func selectAction(coord coordinates) string {
 		Options:  array,
 		PageSize: 20,
 	}
-	survey.AskOne(prompt, &action, nil)
+	err := survey.AskOne(prompt, &action, nil)
+	if err != nil {
+		os.Exit(1)
+	}
 
 	return action
 }
@@ -376,7 +389,6 @@ func checkWin() {
 }
 
 func main() {
-
 	if runtime.GOOS == "windows" {
 		clear = "cls"
 	} else {
